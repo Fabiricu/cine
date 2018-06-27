@@ -3,7 +3,7 @@
 <hibernate-mapping>
   <class name="poo.cine.Actor" table="Actor">
           <id name="id" column="id_actor" >
-          <generator class="assigned" />
+          <generator class="increment" />
       </id>
       <property name="nombre" column="nombre"/>
       <property name="apellido" column="apellido" />
