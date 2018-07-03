@@ -5,17 +5,51 @@
  */
 package poo.cine.ui;
 
+import java.util.List;
+import javax.swing.JOptionPane;
+//import poo.cine.Calificacion;
+//import poo.cine.Genero;
+//import poo.cine.PaisDeOrigen;
+import poo.cine.Personaje;
+import poo.cine.Actor;
+
+
+
+
+
 /**
  *
- * @author Alumno
+ * @author Alumnotrhtr
  */
 public class PantallaAdministracionPersonajes extends javax.swing.JFrame {
 
     /**
      * Creates new form PantallaAdministracionPersonajes
+     * pri
      */
-    public PantallaAdministracionPersonajes() {
+    /**
+     * Creates new form PantallaAdministracionPersonajes
+     * pri
+     */
+    private final List<Actor> actor;
+    private final List<Personaje> personaje;
+   
+    
+    
+    
+    
+    public PantallaAdministracionPersonajes(List<Personaje> Personaje, List<Actor> Actor) {
+        
+        
+         
+        this.personaje=Personaje;
+        this.actor=Actor;
+                
+        
+        
         initComponents();
+        
+        
     }
 
     /**
@@ -32,11 +66,11 @@ public class PantallaAdministracionPersonajes extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jTextField3 = new javax.swing.JTextField();
+        campoBusqueda = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        despliegue = new javax.swing.JTextArea();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        Busqueda = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -50,19 +84,34 @@ public class PantallaAdministracionPersonajes extends javax.swing.JFrame {
         jButton1.setText("CargarNuevoPersonaje");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                CargarPersonaje(evt);
             }
         });
 
         jButton2.setText("Aceptar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Aceptar(evt);
+            }
+        });
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        despliegue.setColumns(20);
+        despliegue.setRows(5);
+        jScrollPane2.setViewportView(despliegue);
 
         jButton3.setText("Salir");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Salir(evt);
+            }
+        });
 
-        jButton4.setText("Busqueda");
+        Busqueda.setText("Busqueda");
+        Busqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BusquedaPersonaje(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,18 +125,17 @@ public class PantallaAdministracionPersonajes extends javax.swing.JFrame {
                                 .addGap(30, 30, 30)
                                 .addComponent(jButton1)
                                 .addGap(26, 26, 26)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(37, 37, 37))
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel1)
                                 .addGap(15, 15, 15)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)))
+                                .addComponent(campoBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(5, 5, 5)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(Busqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
@@ -100,8 +148,8 @@ public class PantallaAdministracionPersonajes extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
+                    .addComponent(campoBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Busqueda))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
@@ -115,10 +163,33 @@ public class PantallaAdministracionPersonajes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void CargarPersonaje(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarPersonaje
+        // TODO add your handling code here:
+        //validamos los datos minimos
+       
+        if (this.personajeDao.buscarPersonajePorNombre(campoBusqueda.getText()) != null) {
+            JOptionPane.showMessageDialog(null, "Ya existe una Película con ese nombre");
+        }
+        else {
+            // obtenemos los datos ingresados por el usuario
+            int campoBusqueda= Integer.parseInt(campoBusqueda.getText());
+            
+    }//GEN-LAST:event_CargarPersonaje
+
+       
+    private void Aceptar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Aceptar
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Aceptar
+
+    private void Salir(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Salir
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Salir
+
+    private void BusquedaPersonaje(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BusquedaPersonaje
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+        if()
+    }//GEN-LAST:event_BusquedaPersonaje
 
     /**
      * @param args the command line arguments
@@ -156,15 +227,15 @@ public class PantallaAdministracionPersonajes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Busqueda;
+    private javax.swing.JTextField campoBusqueda;
+    private javax.swing.JTextArea despliegue;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }

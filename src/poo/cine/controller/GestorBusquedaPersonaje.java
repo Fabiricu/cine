@@ -18,7 +18,7 @@ public class GestorBusquedaPersonaje {
      public GestorBusquedaPersonaje(SessionFactory sessionFactory) {
                
         // creamos las instancias de los objetos de acceso a datos
-        this.personajeDao = new ActorDaoHibernateImpl(sessionFactory);
+        this.personajeDao = new PersonajeDaoHibernateImpl(sessionFactory);
 
     }
     
@@ -53,4 +53,4 @@ public class GestorBusquedaPersonaje {
 
 
     
-}
+
